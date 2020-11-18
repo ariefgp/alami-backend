@@ -1,6 +1,6 @@
 package com.ariefgusti.model;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.*;;
 
