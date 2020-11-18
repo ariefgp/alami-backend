@@ -18,8 +18,11 @@ public class ProductAPI {
     private final ProductService productService;
 
     @GetMapping
-    public ResponseEntity<List<Product>> findAll() {
-        return ResponseEntity.ok(productService.findAll());
+    public ResponseEntity<List<Product>> findAll(@RequestParam(required = false) String name) {
+        if (name == null)
+            return ResponseEntity.ok(productService.findAll());
+        else
+            return ResponseEntity.ok(productService.findByNameContaining(name));
     }
 
     @PostMapping

@@ -19,6 +19,10 @@ public class ProductService {
         return productRespository.findById(id);
     }
 
+    public List<Product> findByNameContaining(String keyword) {
+        return productRespository.findByNameContaining(keyword);
+    }
+
     public Product save(Product stock) {
         return productRespository.save(stock);
     }
