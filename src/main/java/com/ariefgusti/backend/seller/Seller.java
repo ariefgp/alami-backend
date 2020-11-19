@@ -1,4 +1,4 @@
-package com.ariefgusti.backend.product;
+package com.ariefgusti.backend.seller;
 
 import javax.persistence.Entity;
 import lombok.Data;
@@ -10,27 +10,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
 @Data
-public class Product {
+public class Seller {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long productId;
+    private Long sellerId;
 
     private String name;
 
-    private BigDecimal hargaSatuan;
-
-    @ManyToOne
-    @JoinColumn(name = "sellerId")
-    private long seller;
+    private String kota;
 
     @CreationTimestamp
     private Date createdAt;
