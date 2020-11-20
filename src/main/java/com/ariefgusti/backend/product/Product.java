@@ -1,6 +1,8 @@
 package com.ariefgusti.backend.product;
 
 import javax.persistence.Entity;
+import javax.persistence.ForeignKey;
+
 import lombok.Data;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -11,13 +13,19 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.ariefgusti.backend.seller.Seller;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
-@Entity
+@Entity(name = "Product")
 @Data
+@Table(name = "product")
 public class Product {
 
     @Id
@@ -29,8 +37,11 @@ public class Product {
     private BigDecimal hargaSatuan;
 
     @ManyToOne
-    @JoinColumn(name = "sellerId")
-    private long seller;
+    @JoinColumns({
+        @JoinColumn(name = "sellerId", referencedColumnName="sellerId", foreignKey = @ForeignKey(name = "SELLER_ID_FK")),
+        @JoinColumn(name = "sellerName", referencedColumnName="name", foreignKey = @ForeignKey(name = "SELLER_NAME_FK")),
+    })
+    private Seller seller;
 
     @CreationTimestamp
     private Date createdAt;
