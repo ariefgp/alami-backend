@@ -43,7 +43,7 @@ public class Product {
         fetch = FetchType.LAZY,
         optional = false
     )
-    @JoinColumn(name = "sellerId", referencedColumnName="sellerId", foreignKey = @ForeignKey(name = "SELLER_ID_FK")),
+    @JoinColumn(name = "sellerId", referencedColumnName="sellerId", foreignKey = @ForeignKey(name = "SELLER_ID_FK"))
     private Seller seller;
 
     @CreationTimestamp
