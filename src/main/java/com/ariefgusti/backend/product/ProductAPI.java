@@ -17,7 +17,7 @@ import java.util.Optional;
 public class ProductAPI {
     private final ProductService productService;
 
-    @GetMapping
+    @GetMapping()
     public ResponseEntity<List<Product>> findAll(@RequestParam(required = false) String name) {
         if (name == null)
             return ResponseEntity.ok(productService.findAll());
@@ -25,7 +25,7 @@ public class ProductAPI {
             return ResponseEntity.ok(productService.findByNameContaining(name));
     }
 
-    @PostMapping
+    @PostMapping()
     public ResponseEntity create(@Valid @RequestBody Product product) {
         return ResponseEntity.ok(productService.save(product));
     }

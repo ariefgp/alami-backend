@@ -18,12 +18,12 @@ import java.util.Optional;
 public class SellerAPI {
     private final SellerService sellerService;
 
-    @GetMapping
+    @GetMapping()
     public ResponseEntity<List<Seller>> findAll(@RequestParam(required = false) String name) {
         return ResponseEntity.ok(sellerService.findAll());
     }
 
-    @PostMapping
+    @PostMapping()
     public ResponseEntity create(@Valid @RequestBody Seller seller) {
         return ResponseEntity.ok(sellerService.save(seller));
     }
